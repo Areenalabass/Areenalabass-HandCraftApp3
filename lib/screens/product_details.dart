@@ -46,7 +46,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             Container(
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
-                color: const Color(0xFFE9FFE5),
+                color: const Color(0xFFD7E1FA),
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Center(
@@ -71,7 +71,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             Text(
               "\$${product["price"].toStringAsFixed(2)}",
               style: const TextStyle(
-                color: Colors.green,
+                color: Color(0xFF5A54D2),
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),
@@ -99,7 +99,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       if (quantity > 1) quantity--;
                     });
                   },
-                  icon: const Icon(Icons.remove_circle_outline),
+                  icon: const Icon(Icons.remove_circle_outline, color: Color(0xFF5A54D2)),
                 ),
                 Text(
                   quantity.toString(),
@@ -111,7 +111,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       quantity++;
                     });
                   },
-                  icon: const Icon(Icons.add_circle_outline),
+                  icon: const Icon(Icons.add_circle_outline, color: Color(0xFF5A54D2)),
                 ),
               ],
             ),
@@ -137,7 +137,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
+                      backgroundColor: const Color(0xFF5A54D2),
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8)),
@@ -164,12 +164,12 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(
                           content: Text("Added to cart 🛒"),
-                          backgroundColor: Colors.green,
+                          backgroundColor: Color(0xFF5A54D2),
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFDFFFE3),
+                      backgroundColor: const Color(0xFFD7E1FA),
                       padding: const EdgeInsets.symmetric(vertical: 14),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(8)),
@@ -177,7 +177,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                     child: const Text(
                       "Add to cart",
                       style: TextStyle(
-                          color: Colors.green,
+                          color: Color(0xFF5A54D2),
                           fontWeight: FontWeight.bold,
                           fontSize: 16),
                     ),

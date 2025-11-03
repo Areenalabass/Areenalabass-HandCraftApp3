@@ -9,133 +9,157 @@ class OnboardingThirdScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
         bottom: false,
-        child: Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.40,
-              width: double.infinity,
-              child: ClipPath(
-                clipper: _HeaderCurveClipper3(),
-                child: Container(
-                  color: primary,
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 18),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(
+                  minHeight: constraints.maxHeight,
+                ),
+                child: IntrinsicHeight(
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      // ===== Header Section =====
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.35,
+                        width: double.infinity,
+                        child: ClipPath(
+                          clipper: _HeaderCurveClipper3(),
+                          child: Container(
+                            color: primary,
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 18),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
+                                    Icon(Icons.local_shipping,
+                                        color: Colors.white),
+                                    SizedBox(width: 8),
+                                    Icon(Icons.public, color: Colors.white),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                Text(
+                                  'Handicrafts Shop',
+                                  style: theme.textTheme.titleLarge?.copyWith(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                                const SizedBox(height: 6),
+                                Container(
+                                  width: 160,
+                                  height: 2,
+                                  color: Colors.white,
+                                ),
+                                const SizedBox(height: 8),
+                                Text(
+                                  'Find what inspires you',
+                                  style: theme.textTheme.titleSmall?.copyWith(
+                                    color: Colors.white,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      // ===== Image & Text Section =====
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 24.0, vertical: 16),
+                        child: Column(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(16),
+                              child: AspectRatio(
+                                aspectRatio: 16 / 9,
+                                child: Image.asset(
+                                  'images/pic2.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              'Unique Designs. Endless\nVariety. Pure Art',
+                              textAlign: TextAlign.center,
+                              style: theme.textTheme.titleSmall?.copyWith(
+                                color: primary,
+                                fontWeight: FontWeight.w700,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      const Spacer(),
+
+                      // ===== Button =====
+                      Padding(
+                        padding:
+                        const EdgeInsets.fromLTRB(24, 0, 24, 20 + 8),
+                        child: SizedBox(
+                          width: double.infinity,
+                          height: 48,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: primary,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              elevation: 0,
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (_) => const WelcomeScreen(),
+                                ),
+                              );
+                            },
+                            child: const Text(
+                              'Explore',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.w800,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      const SizedBox(height: 12),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
-                          Icon(Icons.local_shipping, color: Colors.white),
+                          _Dot(active: false, color: primary, dim: true),
                           SizedBox(width: 8),
-                          Icon(Icons.public, color: Colors.white),
+                          _Dot(active: false, color: primary, dim: true),
+                          SizedBox(width: 8),
+                          _Dot(active: true, color: primary),
                         ],
                       ),
-                      const SizedBox(height: 10),
-                      Text(
-                        'Handicrafts Shop',
-                        style: theme.textTheme.titleLarge?.copyWith(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w800,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(height: 6),
-                      Container(
-                        width: 160,
-                        height: 2,
-                        color: Colors.white,
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Find what inspires you',
-                        style: theme.textTheme.titleSmall?.copyWith(
-                          color: Colors.white,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
+                      const SizedBox(height: 12),
                     ],
                   ),
                 ),
               ),
-            ),
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Column(
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(16),
-                    child: AspectRatio(
-                      aspectRatio: 16/9,
-                      child: Image.asset(
-                        'images/pic2.png',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  const SizedBox(height: 16),
-                  Text(
-                    'Unique Designs. Endless\nVariety. Pure Art',
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.titleSmall?.copyWith(
-                      color: primary,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(24, 0, 24, 20 + 8),
-              child: SizedBox(
-                width: double.infinity,
-                height: 48,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: primary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    elevation: 0,
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(
-                        builder: (_) => const WelcomeScreen(),
-                      ),
-                    );
-                  },
-                  child: const Text(
-                    'Explore',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800,
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 12),
-            // Page indicator dots now at the bottom
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                _Dot(active: false, color: primary, dim: true),
-                SizedBox(width: 8),
-                _Dot(active: false, color: primary, dim: true),
-                SizedBox(width: 8),
-                _Dot(active: true, color: primary),
-              ],
-            ),
-            const SizedBox(height: 12),
-          ],
+            );
+          },
         ),
       ),
     );
@@ -149,7 +173,8 @@ class _HeaderCurveClipper3 extends CustomClipper<Path> {
     path.lineTo(0, size.height * 0.85);
     final controlPoint = Offset(size.width * 0.45, size.height * 0.95);
     final endPoint = Offset(size.width, size.height * 0.70);
-    path.quadraticBezierTo(controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy);
+    path.quadraticBezierTo(
+        controlPoint.dx, controlPoint.dy, endPoint.dx, endPoint.dy);
     path.lineTo(size.width, 0);
     path.close();
     return path;

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../widgets/handicrafts_drawer.dart';
 import 'favourites_page.dart';
@@ -34,28 +33,28 @@ class ProductScreen extends StatelessWidget {
       {
         "title": "Bracelets black with Custom name",
         "price": 1.5,
-        "color": const Color(0xFFD7FAD9),
+        "color": const Color(0xFF5A54D2),
         "image": "images/bracelet.jpg",
         "description": "Beautiful handmade bracelet with your custom name engraved.",
       },
       {
         "title": "Soap with natural olive oil",
         "price": 2.5,
-        "color": const Color(0xFFDCD9F9),
+        "color": const Color(0xFF5A54D2),
         "image": "images/soap.jpg",
         "description": "Natural olive oil soap for soft and healthy skin.",
       },
       {
         "title": "Handmade bag",
         "price": 5,
-        "color": const Color(0xFFDCECFD),
+        "color": const Color(0xFF5A54D2),
         "image": "images/bag.jpg",
         "description": "A stylish handmade bag perfect for daily use.",
       },
       {
         "title": "A candle with custom writing on it.",
         "price": 2,
-        "color": const Color(0xFFF9D8D8),
+        "color": const Color(0xFF5A54D2),
         "image": "images/candle.jpg",
         "description": "A personalized candle with custom message engraved.",
       },
@@ -150,7 +149,7 @@ class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color: widget.product["color"],
+        color: const Color(0xFF5A54D2),
         borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
@@ -182,6 +181,7 @@ class _ProductCardState extends State<ProductCard> {
                   style: const TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
+                    color: Colors.white, // جعل النص أبيض لتباين مع الخلفية
                   ),
                 ),
               ),
@@ -195,10 +195,11 @@ class _ProductCardState extends State<ProductCard> {
                       style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
+                        color: Colors.white,
                       ),
                     ),
                     const Icon(Icons.shopping_cart_outlined,
-                        color: Colors.black87, size: 20),
+                        color: Colors.white, size: 20),
                   ],
                 ),
               ),
@@ -212,7 +213,7 @@ class _ProductCardState extends State<ProductCard> {
               onTap: toggleFavorite,
               child: Icon(
                 isFav ? Icons.favorite : Icons.favorite_border,
-                color: Color(0xFF7C7BC6),
+                color: Colors.red,
                 size: 24,
               ),
             ),

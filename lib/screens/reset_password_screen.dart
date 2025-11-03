@@ -34,14 +34,14 @@ class ResetPasswordScreen extends StatelessWidget {
                       onPressed: () => Navigator.of(context).pop(),
                     ),
                   ),
-                  // ✅ تم استبدال الأيقونة بصورة اللوجو
+
                   Positioned(
                     right: 18,
                     top: 12,
                     child: Row(
                       children: [
                         Image.asset(
-                          'images/logo.png', // ← غيّر المسار حسب اسم الصورة عندك
+                          'images/logo.png',
                           width: 20,
                           height: 20,
                           fit: BoxFit.contain,

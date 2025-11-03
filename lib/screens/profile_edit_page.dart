@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:handcrafts/screens/product_screen.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProfileEditPage extends StatefulWidget {
   @override
@@ -10,22 +7,10 @@ class ProfileEditPage extends StatefulWidget {
 }
 
 class _ProfileEditPageState extends State<ProfileEditPage> {
-  TextEditingController nameController = TextEditingController();
-  TextEditingController addressController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-
-  File? _image;
-
-  Future<void> _pickImage() async {
-    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
-
-    if (pickedFile != null) {
-      setState(() {
-        _image = File(pickedFile.path);
-      });
-    }
-  }
+  TextEditingController nameController = TextEditingController(text: "Areen Alabass");
+  TextEditingController addressController = TextEditingController(text: "Mafraq, Jordan");
+  TextEditingController emailController = TextEditingController(text: "areen.alabass@example.com");
+  TextEditingController phoneController = TextEditingController(text: "+962 7 1234 5678");
 
   @override
   Widget build(BuildContext context) {
@@ -37,34 +22,14 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
           child: Column(
             children: [
               SizedBox(height: 15),
-              Stack(
-                alignment: Alignment.bottomRight,
-                children: [
-                  CircleAvatar(
-                    radius: 70,
-                    backgroundColor: Color(0xFF6A60C6),
-                    backgroundImage: _image != null ? FileImage(_image!) : null,
-                    child: _image == null
-                        ? Icon(Icons.person, size: 90, color: Colors.white)
-                        : null,
-                  ),
-                  Positioned(
-                    bottom: 10,
-                    right: 10,
-                    child: GestureDetector(
-                      onTap: _pickImage,
-                      child: CircleAvatar(
-                        radius: 18,
-                        backgroundColor: Colors.white,
-                        child: Icon(Icons.add, color: Color(0xFF6A60C6)),
-                      ),
-                    ),
-                  ),
-                ],
+              CircleAvatar(
+                radius: 70,
+                backgroundColor: Color(0xFF5A54D2),
+                backgroundImage: AssetImage("images/person.png"),
               ),
-              SizedBox(height: 8),
+              SizedBox(height: 12),
               Text(
-                "Areen Alabass",
+                nameController.text,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 22,
@@ -72,35 +37,43 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                 ),
               ),
               Text(
-                "Mafraq, Jordan",
+                addressController.text,
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey[700],
                 ),
               ),
-              SizedBox(height: 20),
-              _buildTextField("Name :", nameController),
+              SizedBox(height: 25),
+              _buildEditableField("Name", nameController),
               SizedBox(height: 10),
-              _buildTextField("Address :", addressController),
+              _buildEditableField("Address", addressController),
               SizedBox(height: 10),
-              _buildTextField("Email :", emailController),
+              _buildEditableField("Email", emailController),
               SizedBox(height: 10),
-              _buildTextField("Phone :", phoneController),
+              _buildEditableField("Phone", phoneController),
               SizedBox(height: 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF5547C9),
+                      backgroundColor: Color(0xFF5A54D2),
                       padding: EdgeInsets.symmetric(horizontal: 32, vertical: 12),
-                      textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                      textStyle: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
-                    onPressed: () {},
-                    child: Text("Edit Now"),
+                    onPressed: () {
+                      setState(() {});
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Profile Updated!")),
+                      );
+                    },
+                    child: Text(
+                      "Edit Now",
+                      style: TextStyle(color: Colors.black),
+                    ),
                   ),
                   SizedBox(width: 20),
                   OutlinedButton(
@@ -137,7 +110,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
                       "HANDICRAFTS",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Color(0xFF6A60C6),
+                        color: Color(0xFF5A54D2),
                         fontSize: 14,
                       ),
                     ),
@@ -151,11 +124,11 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
     );
   }
 
-  Widget _buildTextField(String label, TextEditingController controller) {
+  Widget _buildEditableField(String label, TextEditingController controller) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: TextStyle(fontSize: 15)),
+        Text(label, style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold)),
         SizedBox(height: 6),
         TextFormField(
           controller: controller,
@@ -166,7 +139,7 @@ class _ProfileEditPageState extends State<ProfileEditPage> {
               borderRadius: BorderRadius.circular(8),
               borderSide: BorderSide(color: Colors.grey[300]!, width: 1.3),
             ),
-            contentPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+            contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
           ),
         ),
       ],

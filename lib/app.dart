@@ -7,7 +7,7 @@ class HandicraftsApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp( // Added const for optimization
+    return MaterialApp(
       title: 'Handicrafts',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

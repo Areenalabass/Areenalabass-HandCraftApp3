@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "240536702825",
+    "project_id": "handcraftsapp-a1786",
+    "storage_bucket": "handcraftsapp-a1786.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240536702825:android:77ed94ef564e2e3d80b7f8",
+        "android_client_info": {
+          "package_name": "com.example.handcraftsapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMBJYtYSP86fLFlQ9JsDk7sQYgN9ASUgQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

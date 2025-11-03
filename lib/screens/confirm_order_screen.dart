@@ -3,7 +3,7 @@ import 'package:handcrafts/providers/cart_provider.dart'; // Import CartItem mod
 import 'payment_details_screen.dart';
 
 class ConfirmOrderPage extends StatefulWidget {
-  final List<CartItem> cartItems; // Changed to accept List<CartItem>
+  final List<CartItem> cartItems;
 
   const ConfirmOrderPage({super.key, required this.cartItems});
 
@@ -12,7 +12,6 @@ class ConfirmOrderPage extends StatefulWidget {
 }
 
 class _ConfirmOrderPageState extends State<ConfirmOrderPage> {
-  // This list will be a local copy as maps to handle quantity, similar to the original logic.
   late List<Map<String, dynamic>> localCartItems;
   String? selectedPaymentMethod;
 

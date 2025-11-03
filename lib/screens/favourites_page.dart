@@ -96,7 +96,7 @@ class _FavouritesPageState extends State<FavouritesPage> {
                     trailing: IconButton(
                       icon: Icon(
                         Icons.favorite,
-                        color: Color(0xFF7C7BC6),
+                        color: Colors.red,
                         size: 30,
                       ),
                       onPressed: () {
